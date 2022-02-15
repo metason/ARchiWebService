@@ -1,0 +1,44 @@
+[
+    {
+        "type": "Service",
+        "id": "com.verifiedspaces.service.mecca",
+        "name": "Direction to Mecca",
+        "desc": "Show direction to Mecca",
+        "orga": "Verified Spaces",
+        "email": "support@verifiedspaces.com",
+        "dataURL": "https://www.verifiedspaces.com/arext/mecca/",
+        "logoURL": "https://www.verifiedspaces.com/extension/mecca.png",
+        "orgaURL": "http://www.verifiedspaces.com",
+        "validUntil": "2099-12-30",
+        "preCondition": "",
+        "dataTransfer": "POST:USER"
+    },
+    {
+        "type": "Workflow",
+        "id": "com.verifiedspaces.workflow.claimdemo",
+        "name": "Damage Claim",
+        "desc": "Claim damage in room (demo case).",
+        "orga": "Verified Spaces",
+        "email": "support@verifiedspaces.com",
+        "dataURL": "https://www.verifiedspaces.com/arext/verified/",
+        "logoURL": "https://www.verifiedspaces.com/extension/vslogo.png",
+        "orgaURL": "https://www.verifiedspaces.com",
+        "validUntil": "2020-12-30",
+        "preCondition": "ANY items.subtype == 'Damaged Area'",
+        "dataTransfer": "POST:SPACE POST:SVG POST:WEB3D POST:PHOTO"
+    },
+    {
+        "type": "Curation",
+        "id": "com.verifiedspaces.claimdemo.intro",
+        "name": "Damage Claim Demo",
+        "desc": "Intro to damage claim reporting.",
+        "orga": "Verified Spaces",
+        "email": "support@verifiedspaces.com",
+        "dataURL": "https://www.verifiedspaces.com/extension/claimintro/index.html",
+        "logoURL": "https://www.verifiedspaces.com/extension/vslogo.png",
+        "orgaURL": "http://www.verifiedspaces.com",
+        "validUntil": "2099-12-30",
+        "preCondition": "",
+        "dataTransfer": "GET:HTML"
+    }
+]
