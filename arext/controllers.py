@@ -1,19 +1,23 @@
 # Services to generate JSON for ARchi VR App Extensions
 
 # Import flask dependencies
+from flask import Flask
 from flask import Blueprint, request, render_template, Response
 import json, math, os
 
 # Define the blueprint: 'arext', set its url prefix: app.url/arext
 mod_arext = Blueprint('arext', __name__, url_prefix='/arext')
+app = Flask(__name__)
+app.register_blueprint(mod_arext)
+
 
 # Set the route and accepted methods
-@mod_arext.route('/test', methods=['GET'])
 # test routine to check server status
+@app.route('/test', methods=['GET'])
 def test():
     return Response("AR Extension Service is running.", status=201)
 
-@mod_arext.route('/verified/', methods=['GET', 'POST'])
+@app.route('/verified/', methods=['GET', 'POST'])
 # Workflow extension sample: creates HTML page
 def verified():
     response = {
@@ -21,7 +25,7 @@ def verified():
         "title" :  "Damage Claim",
         "orga" :  "Verified Spaces",
         "extensionId" : "com.verifiedspaces.workflow.claimdemo",
-        "logoURL" : "https://www.verifiedspaces.com/extension/vslogo.png",
+        "logoURL" : "https://YOUR_SERVER_ADDRESS/extension/vslogo.png",
         "validUntil" :  "2029-12-30"
     }
     docpath = '/data/www/ar/verifieddocs/'
@@ -67,7 +71,7 @@ def verified():
         filename = docpath + space['id'] + ".html"
         if os.path.exists(filename):
             os.remove(filename)
-        weburl = "https://www.verifiedspaces.com/verifieddocs/" + space['id'] + ".html"
+        weburl = "https://YOUR_SERVER_ADDRESS/verifieddocs/" + space['id'] + ".html"
         htmlfile = open(filename, "w")
         htmlfile.write(html)
         htmlfile.close()

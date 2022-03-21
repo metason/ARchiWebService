@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  api:
+      build: 
+          context: ./arext
+          dockerfile: Dockerfile
+      command: gunicorn --bind 0.0.0.0:5000 controllers:app
+      ports:
+          - "5000:5000"
+      volumes:
+          - appdata:/var/www/
+      networks:
+          - frontend
+
+networks:
+    frontend:
+        driver: bridge
+
+volumes:
+    appdata:
+        driver: local
